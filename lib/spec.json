@@ -1,0 +1,2255 @@
+{
+    "openapi": "3.0.0",
+    "servers": [
+        {
+            "url": "https://southcentralus.api.cognitive.microsoft.com/customvision/v2.0/Prediction"
+        },
+        {
+            "url": "{Endpoint}",
+            "variables": {
+                "Endpoint": {
+                    "description": "Supported Cognitive Services endpoints",
+                    "x-ms-parameter-location": "client",
+                    "x-ms-skip-url-encoding": true,
+                    "default": ""
+                }
+            }
+        }
+    ],
+    "info": {
+        "contact": {
+            "x-twitter": "microsoft"
+        },
+        "title": "Custom Vision Prediction Client",
+        "version": "2.0",
+        "x-apisguru-categories": [
+            "cloud"
+        ],
+        "x-logo": {
+            "url": "https://api.apis.guru/v2/cache/logo/https_twitter.com_microsoft_profile_image.png"
+        },
+        "x-origin": [
+            {
+                "format": "swagger",
+                "url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/specification/cognitiveservices/data-plane/CustomVision/Prediction/stable/v2.0/Prediction.json",
+                "version": "2.0"
+            }
+        ],
+        "x-preferred": true,
+        "x-providerName": "microsoft.com",
+        "x-serviceName": "cognitiveservices-Prediction",
+        "x-tags": [
+            "Microsoft"
+        ]
+    },
+    "paths": {
+        "/{projectId}/image": {
+            "post": {
+                "operationId": "PredictImage",
+                "parameters": [
+                    {
+                        "description": "The project id",
+                        "in": "path",
+                        "name": "projectId",
+                        "required": true,
+                        "x-nullable": false,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    },
+                    {
+                        "description": "Optional. Specifies the id of a particular iteration to evaluate against.\r\n            The default iteration for the project will be used when not specified",
+                        "in": "query",
+                        "name": "iterationId",
+                        "required": false,
+                        "x-nullable": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    },
+                    {
+                        "description": "Optional. Specifies the name of application using the endpoint",
+                        "in": "query",
+                        "name": "application",
+                        "required": false,
+                        "x-nullable": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "in": "header",
+                        "name": "Prediction-Key",
+                        "required": true,
+                        "x-ms-client-name": "ApiKey",
+                        "x-ms-parameter-location": "client",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "created": {
+                                            "format": "date-time",
+                                            "readOnly": true,
+                                            "type": "string",
+                                            "nullable": false
+                                        },
+                                        "id": {
+                                            "format": "uuid",
+                                            "readOnly": true,
+                                            "type": "string",
+                                            "nullable": false
+                                        },
+                                        "iteration": {
+                                            "format": "uuid",
+                                            "readOnly": true,
+                                            "type": "string",
+                                            "nullable": false
+                                        },
+                                        "predictions": {
+                                            "items": {
+                                                "properties": {
+                                                    "boundingBox": {
+                                                        "readOnly": true,
+                                                        "properties": {
+                                                            "height": {
+                                                                "format": "float",
+                                                                "type": "number",
+                                                                "nullable": false
+                                                            },
+                                                            "left": {
+                                                                "format": "float",
+                                                                "type": "number",
+                                                                "nullable": false
+                                                            },
+                                                            "top": {
+                                                                "format": "float",
+                                                                "type": "number",
+                                                                "nullable": false
+                                                            },
+                                                            "width": {
+                                                                "format": "float",
+                                                                "type": "number",
+                                                                "nullable": false
+                                                            }
+                                                        },
+                                                        "type": "object",
+                                                        "nullable": true
+                                                    },
+                                                    "probability": {
+                                                        "format": "float",
+                                                        "readOnly": true,
+                                                        "type": "number",
+                                                        "nullable": false
+                                                    },
+                                                    "tagId": {
+                                                        "format": "uuid",
+                                                        "readOnly": true,
+                                                        "type": "string",
+                                                        "nullable": false
+                                                    },
+                                                    "tagName": {
+                                                        "readOnly": true,
+                                                        "type": "string",
+                                                        "nullable": true
+                                                    }
+                                                },
+                                                "type": "object",
+                                                "nullable": true
+                                            },
+                                            "readOnly": true,
+                                            "type": "array",
+                                            "nullable": true
+                                        },
+                                        "project": {
+                                            "format": "uuid",
+                                            "readOnly": true,
+                                            "type": "string",
+                                            "nullable": false
+                                        }
+                                    },
+                                    "type": "object",
+                                    "nullable": true
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "properties": {
+                                        "created": {
+                                            "format": "date-time",
+                                            "readOnly": true,
+                                            "type": "string",
+                                            "nullable": false
+                                        },
+                                        "id": {
+                                            "format": "uuid",
+                                            "readOnly": true,
+                                            "type": "string",
+                                            "nullable": false
+                                        },
+                                        "iteration": {
+                                            "format": "uuid",
+                                            "readOnly": true,
+                                            "type": "string",
+                                            "nullable": false
+                                        },
+                                        "predictions": {
+                                            "items": {
+                                                "properties": {
+                                                    "boundingBox": {
+                                                        "readOnly": true,
+                                                        "properties": {
+                                                            "height": {
+                                                                "format": "float",
+                                                                "type": "number",
+                                                                "nullable": false
+                                                            },
+                                                            "left": {
+                                                                "format": "float",
+                                                                "type": "number",
+                                                                "nullable": false
+                                                            },
+                                                            "top": {
+                                                                "format": "float",
+                                                                "type": "number",
+                                                                "nullable": false
+                                                            },
+                                                            "width": {
+                                                                "format": "float",
+                                                                "type": "number",
+                                                                "nullable": false
+                                                            }
+                                                        },
+                                                        "type": "object",
+                                                        "nullable": true
+                                                    },
+                                                    "probability": {
+                                                        "format": "float",
+                                                        "readOnly": true,
+                                                        "type": "number",
+                                                        "nullable": false
+                                                    },
+                                                    "tagId": {
+                                                        "format": "uuid",
+                                                        "readOnly": true,
+                                                        "type": "string",
+                                                        "nullable": false
+                                                    },
+                                                    "tagName": {
+                                                        "readOnly": true,
+                                                        "type": "string",
+                                                        "nullable": true
+                                                    }
+                                                },
+                                                "type": "object",
+                                                "nullable": true
+                                            },
+                                            "readOnly": true,
+                                            "type": "array",
+                                            "nullable": true
+                                        },
+                                        "project": {
+                                            "format": "uuid",
+                                            "readOnly": true,
+                                            "type": "string",
+                                            "nullable": false
+                                        }
+                                    },
+                                    "type": "object",
+                                    "nullable": true
+                                }
+                            },
+                            "application/xml": {
+                                "schema": {
+                                    "properties": {
+                                        "created": {
+                                            "format": "date-time",
+                                            "readOnly": true,
+                                            "type": "string",
+                                            "nullable": false
+                                        },
+                                        "id": {
+                                            "format": "uuid",
+                                            "readOnly": true,
+                                            "type": "string",
+                                            "nullable": false
+                                        },
+                                        "iteration": {
+                                            "format": "uuid",
+                                            "readOnly": true,
+                                            "type": "string",
+                                            "nullable": false
+                                        },
+                                        "predictions": {
+                                            "items": {
+                                                "properties": {
+                                                    "boundingBox": {
+                                                        "readOnly": true,
+                                                        "properties": {
+                                                            "height": {
+                                                                "format": "float",
+                                                                "type": "number",
+                                                                "nullable": false
+                                                            },
+                                                            "left": {
+                                                                "format": "float",
+                                                                "type": "number",
+                                                                "nullable": false
+                                                            },
+                                                            "top": {
+                                                                "format": "float",
+                                                                "type": "number",
+                                                                "nullable": false
+                                                            },
+                                                            "width": {
+                                                                "format": "float",
+                                                                "type": "number",
+                                                                "nullable": false
+                                                            }
+                                                        },
+                                                        "type": "object",
+                                                        "nullable": true
+                                                    },
+                                                    "probability": {
+                                                        "format": "float",
+                                                        "readOnly": true,
+                                                        "type": "number",
+                                                        "nullable": false
+                                                    },
+                                                    "tagId": {
+                                                        "format": "uuid",
+                                                        "readOnly": true,
+                                                        "type": "string",
+                                                        "nullable": false
+                                                    },
+                                                    "tagName": {
+                                                        "readOnly": true,
+                                                        "type": "string",
+                                                        "nullable": true
+                                                    }
+                                                },
+                                                "type": "object",
+                                                "nullable": true
+                                            },
+                                            "readOnly": true,
+                                            "type": "array",
+                                            "nullable": true
+                                        },
+                                        "project": {
+                                            "format": "uuid",
+                                            "readOnly": true,
+                                            "type": "string",
+                                            "nullable": false
+                                        }
+                                    },
+                                    "type": "object",
+                                    "nullable": true
+                                }
+                            },
+                            "text/xml": {
+                                "schema": {
+                                    "properties": {
+                                        "created": {
+                                            "format": "date-time",
+                                            "readOnly": true,
+                                            "type": "string",
+                                            "nullable": false
+                                        },
+                                        "id": {
+                                            "format": "uuid",
+                                            "readOnly": true,
+                                            "type": "string",
+                                            "nullable": false
+                                        },
+                                        "iteration": {
+                                            "format": "uuid",
+                                            "readOnly": true,
+                                            "type": "string",
+                                            "nullable": false
+                                        },
+                                        "predictions": {
+                                            "items": {
+                                                "properties": {
+                                                    "boundingBox": {
+                                                        "readOnly": true,
+                                                        "properties": {
+                                                            "height": {
+                                                                "format": "float",
+                                                                "type": "number",
+                                                                "nullable": false
+                                                            },
+                                                            "left": {
+                                                                "format": "float",
+                                                                "type": "number",
+                                                                "nullable": false
+                                                            },
+                                                            "top": {
+                                                                "format": "float",
+                                                                "type": "number",
+                                                                "nullable": false
+                                                            },
+                                                            "width": {
+                                                                "format": "float",
+                                                                "type": "number",
+                                                                "nullable": false
+                                                            }
+                                                        },
+                                                        "type": "object",
+                                                        "nullable": true
+                                                    },
+                                                    "probability": {
+                                                        "format": "float",
+                                                        "readOnly": true,
+                                                        "type": "number",
+                                                        "nullable": false
+                                                    },
+                                                    "tagId": {
+                                                        "format": "uuid",
+                                                        "readOnly": true,
+                                                        "type": "string",
+                                                        "nullable": false
+                                                    },
+                                                    "tagName": {
+                                                        "readOnly": true,
+                                                        "type": "string",
+                                                        "nullable": true
+                                                    }
+                                                },
+                                                "type": "object",
+                                                "nullable": true
+                                            },
+                                            "readOnly": true,
+                                            "type": "array",
+                                            "nullable": true
+                                        },
+                                        "project": {
+                                            "format": "uuid",
+                                            "readOnly": true,
+                                            "type": "string",
+                                            "nullable": false
+                                        }
+                                    },
+                                    "type": "object",
+                                    "nullable": true
+                                }
+                            }
+                        }
+                    }
+                },
+                "summary": "Predict an image and saves the result",
+                "tags": [
+                    "ImagePredictionApi"
+                ],
+                "x-ms-examples": {
+                    "Successful PredictImage request": {
+                        "parameters": {
+                            "Content-Type": "application/json",
+                            "Endpoint": "https://westus.api.cognitive.microsoft.com",
+                            "Prediction-Key": "{API Key}",
+                            "imageData": "multipart-form-data",
+                            "iterationId": "fe1e83c4-6f50-4899-9544-6bb08cf0e15a",
+                            "projectId": "64b822c5-8082-4b36-a426-27225f4aa18c"
+                        },
+                        "responses": {
+                            "200": {
+                                "body": {
+                                    "created": "2017-12-19T14:21:41.6789561Z",
+                                    "id": "951098b2-9b69-427b-bddb-d5cb618874e3",
+                                    "iteration": "fe1e83c4-6f50-4899-9544-6bb08cf0e15a",
+                                    "predictions": [
+                                        {
+                                            "probability": 0.05149666,
+                                            "tagId": "e31ff107-5505-4753-be42-b369b21b026c",
+                                            "tagName": "Hemlock"
+                                        },
+                                        {
+                                            "probability": 0.000193528482,
+                                            "tagId": "349d72ac-0948-4d51-b1e4-c14a1f9b848a",
+                                            "tagName": "Japanese Cherry"
+                                        }
+                                    ],
+                                    "project": "64b822c5-8082-4b36-a426-27225f4aa18c"
+                                },
+                                "headers": {}
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/octet-stream": {
+                            "schema": {
+                                "type": "string",
+                                "format": "binary"
+                            }
+                        }
+                    },
+                    "required": true
+                }
+            }
+        },
+        "/{projectId}/image/nostore": {
+            "post": {
+                "operationId": "PredictImageWithNoStore",
+                "parameters": [
+                    {
+                        "description": "The project id",
+                        "in": "path",
+                        "name": "projectId",
+                        "required": true,
+                        "x-nullable": false,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    },
+                    {
+                        "description": "Optional. Specifies the id of a particular iteration to evaluate against.\r\n            The default iteration for the project will be used when not specified",
+                        "in": "query",
+                        "name": "iterationId",
+                        "required": false,
+                        "x-nullable": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    },
+                    {
+                        "description": "Optional. Specifies the name of application using the endpoint",
+                        "in": "query",
+                        "name": "application",
+                        "required": false,
+                        "x-nullable": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "in": "header",
+                        "name": "Prediction-Key",
+                        "required": true,
+                        "x-ms-client-name": "ApiKey",
+                        "x-ms-parameter-location": "client",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "created": {
+                                            "format": "date-time",
+                                            "readOnly": true,
+                                            "type": "string",
+                                            "nullable": false
+                                        },
+                                        "id": {
+                                            "format": "uuid",
+                                            "readOnly": true,
+                                            "type": "string",
+                                            "nullable": false
+                                        },
+                                        "iteration": {
+                                            "format": "uuid",
+                                            "readOnly": true,
+                                            "type": "string",
+                                            "nullable": false
+                                        },
+                                        "predictions": {
+                                            "items": {
+                                                "properties": {
+                                                    "boundingBox": {
+                                                        "readOnly": true,
+                                                        "properties": {
+                                                            "height": {
+                                                                "format": "float",
+                                                                "type": "number",
+                                                                "nullable": false
+                                                            },
+                                                            "left": {
+                                                                "format": "float",
+                                                                "type": "number",
+                                                                "nullable": false
+                                                            },
+                                                            "top": {
+                                                                "format": "float",
+                                                                "type": "number",
+                                                                "nullable": false
+                                                            },
+                                                            "width": {
+                                                                "format": "float",
+                                                                "type": "number",
+                                                                "nullable": false
+                                                            }
+                                                        },
+                                                        "type": "object",
+                                                        "nullable": true
+                                                    },
+                                                    "probability": {
+                                                        "format": "float",
+                                                        "readOnly": true,
+                                                        "type": "number",
+                                                        "nullable": false
+                                                    },
+                                                    "tagId": {
+                                                        "format": "uuid",
+                                                        "readOnly": true,
+                                                        "type": "string",
+                                                        "nullable": false
+                                                    },
+                                                    "tagName": {
+                                                        "readOnly": true,
+                                                        "type": "string",
+                                                        "nullable": true
+                                                    }
+                                                },
+                                                "type": "object",
+                                                "nullable": true
+                                            },
+                                            "readOnly": true,
+                                            "type": "array",
+                                            "nullable": true
+                                        },
+                                        "project": {
+                                            "format": "uuid",
+                                            "readOnly": true,
+                                            "type": "string",
+                                            "nullable": false
+                                        }
+                                    },
+                                    "type": "object",
+                                    "nullable": true
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "properties": {
+                                        "created": {
+                                            "format": "date-time",
+                                            "readOnly": true,
+                                            "type": "string",
+                                            "nullable": false
+                                        },
+                                        "id": {
+                                            "format": "uuid",
+                                            "readOnly": true,
+                                            "type": "string",
+                                            "nullable": false
+                                        },
+                                        "iteration": {
+                                            "format": "uuid",
+                                            "readOnly": true,
+                                            "type": "string",
+                                            "nullable": false
+                                        },
+                                        "predictions": {
+                                            "items": {
+                                                "properties": {
+                                                    "boundingBox": {
+                                                        "readOnly": true,
+                                                        "properties": {
+                                                            "height": {
+                                                                "format": "float",
+                                                                "type": "number",
+                                                                "nullable": false
+                                                            },
+                                                            "left": {
+                                                                "format": "float",
+                                                                "type": "number",
+                                                                "nullable": false
+                                                            },
+                                                            "top": {
+                                                                "format": "float",
+                                                                "type": "number",
+                                                                "nullable": false
+                                                            },
+                                                            "width": {
+                                                                "format": "float",
+                                                                "type": "number",
+                                                                "nullable": false
+                                                            }
+                                                        },
+                                                        "type": "object",
+                                                        "nullable": true
+                                                    },
+                                                    "probability": {
+                                                        "format": "float",
+                                                        "readOnly": true,
+                                                        "type": "number",
+                                                        "nullable": false
+                                                    },
+                                                    "tagId": {
+                                                        "format": "uuid",
+                                                        "readOnly": true,
+                                                        "type": "string",
+                                                        "nullable": false
+                                                    },
+                                                    "tagName": {
+                                                        "readOnly": true,
+                                                        "type": "string",
+                                                        "nullable": true
+                                                    }
+                                                },
+                                                "type": "object",
+                                                "nullable": true
+                                            },
+                                            "readOnly": true,
+                                            "type": "array",
+                                            "nullable": true
+                                        },
+                                        "project": {
+                                            "format": "uuid",
+                                            "readOnly": true,
+                                            "type": "string",
+                                            "nullable": false
+                                        }
+                                    },
+                                    "type": "object",
+                                    "nullable": true
+                                }
+                            },
+                            "application/xml": {
+                                "schema": {
+                                    "properties": {
+                                        "created": {
+                                            "format": "date-time",
+                                            "readOnly": true,
+                                            "type": "string",
+                                            "nullable": false
+                                        },
+                                        "id": {
+                                            "format": "uuid",
+                                            "readOnly": true,
+                                            "type": "string",
+                                            "nullable": false
+                                        },
+                                        "iteration": {
+                                            "format": "uuid",
+                                            "readOnly": true,
+                                            "type": "string",
+                                            "nullable": false
+                                        },
+                                        "predictions": {
+                                            "items": {
+                                                "properties": {
+                                                    "boundingBox": {
+                                                        "readOnly": true,
+                                                        "properties": {
+                                                            "height": {
+                                                                "format": "float",
+                                                                "type": "number",
+                                                                "nullable": false
+                                                            },
+                                                            "left": {
+                                                                "format": "float",
+                                                                "type": "number",
+                                                                "nullable": false
+                                                            },
+                                                            "top": {
+                                                                "format": "float",
+                                                                "type": "number",
+                                                                "nullable": false
+                                                            },
+                                                            "width": {
+                                                                "format": "float",
+                                                                "type": "number",
+                                                                "nullable": false
+                                                            }
+                                                        },
+                                                        "type": "object",
+                                                        "nullable": true
+                                                    },
+                                                    "probability": {
+                                                        "format": "float",
+                                                        "readOnly": true,
+                                                        "type": "number",
+                                                        "nullable": false
+                                                    },
+                                                    "tagId": {
+                                                        "format": "uuid",
+                                                        "readOnly": true,
+                                                        "type": "string",
+                                                        "nullable": false
+                                                    },
+                                                    "tagName": {
+                                                        "readOnly": true,
+                                                        "type": "string",
+                                                        "nullable": true
+                                                    }
+                                                },
+                                                "type": "object",
+                                                "nullable": true
+                                            },
+                                            "readOnly": true,
+                                            "type": "array",
+                                            "nullable": true
+                                        },
+                                        "project": {
+                                            "format": "uuid",
+                                            "readOnly": true,
+                                            "type": "string",
+                                            "nullable": false
+                                        }
+                                    },
+                                    "type": "object",
+                                    "nullable": true
+                                }
+                            },
+                            "text/xml": {
+                                "schema": {
+                                    "properties": {
+                                        "created": {
+                                            "format": "date-time",
+                                            "readOnly": true,
+                                            "type": "string",
+                                            "nullable": false
+                                        },
+                                        "id": {
+                                            "format": "uuid",
+                                            "readOnly": true,
+                                            "type": "string",
+                                            "nullable": false
+                                        },
+                                        "iteration": {
+                                            "format": "uuid",
+                                            "readOnly": true,
+                                            "type": "string",
+                                            "nullable": false
+                                        },
+                                        "predictions": {
+                                            "items": {
+                                                "properties": {
+                                                    "boundingBox": {
+                                                        "readOnly": true,
+                                                        "properties": {
+                                                            "height": {
+                                                                "format": "float",
+                                                                "type": "number",
+                                                                "nullable": false
+                                                            },
+                                                            "left": {
+                                                                "format": "float",
+                                                                "type": "number",
+                                                                "nullable": false
+                                                            },
+                                                            "top": {
+                                                                "format": "float",
+                                                                "type": "number",
+                                                                "nullable": false
+                                                            },
+                                                            "width": {
+                                                                "format": "float",
+                                                                "type": "number",
+                                                                "nullable": false
+                                                            }
+                                                        },
+                                                        "type": "object",
+                                                        "nullable": true
+                                                    },
+                                                    "probability": {
+                                                        "format": "float",
+                                                        "readOnly": true,
+                                                        "type": "number",
+                                                        "nullable": false
+                                                    },
+                                                    "tagId": {
+                                                        "format": "uuid",
+                                                        "readOnly": true,
+                                                        "type": "string",
+                                                        "nullable": false
+                                                    },
+                                                    "tagName": {
+                                                        "readOnly": true,
+                                                        "type": "string",
+                                                        "nullable": true
+                                                    }
+                                                },
+                                                "type": "object",
+                                                "nullable": true
+                                            },
+                                            "readOnly": true,
+                                            "type": "array",
+                                            "nullable": true
+                                        },
+                                        "project": {
+                                            "format": "uuid",
+                                            "readOnly": true,
+                                            "type": "string",
+                                            "nullable": false
+                                        }
+                                    },
+                                    "type": "object",
+                                    "nullable": true
+                                }
+                            }
+                        }
+                    }
+                },
+                "summary": "Predict an image without saving the result",
+                "tags": [
+                    "ImagePredictionApi"
+                ],
+                "x-ms-examples": {
+                    "Successful PredictImageWithNoStore request": {
+                        "parameters": {
+                            "Content-Type": "application/json",
+                            "Endpoint": "https://westus.api.cognitive.microsoft.com",
+                            "Prediction-Key": "{API Key}",
+                            "imageData": "multipart-form-data",
+                            "iterationId": "fe1e83c4-6f50-4899-9544-6bb08cf0e15a",
+                            "projectId": "64b822c5-8082-4b36-a426-27225f4aa18c"
+                        },
+                        "responses": {
+                            "200": {
+                                "body": {
+                                    "created": "2017-12-19T14:21:41.6789561Z",
+                                    "id": "951098b2-9b69-427b-bddb-d5cb618874e3",
+                                    "iteration": "fe1e83c4-6f50-4899-9544-6bb08cf0e15a",
+                                    "predictions": [
+                                        {
+                                            "probability": 0.05149666,
+                                            "tagId": "e31ff107-5505-4753-be42-b369b21b026c",
+                                            "tagName": "Hemlock"
+                                        },
+                                        {
+                                            "probability": 0.000193528482,
+                                            "tagId": "349d72ac-0948-4d51-b1e4-c14a1f9b848a",
+                                            "tagName": "Japanese Cherry"
+                                        }
+                                    ],
+                                    "project": "64b822c5-8082-4b36-a426-27225f4aa18c"
+                                },
+                                "headers": {}
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/octet-stream": {
+                            "schema": {
+                                "type": "string",
+                                "format": "binary"
+                            }
+                        }
+                    },
+                    "required": true
+                }
+            }
+        },
+        "/{projectId}/url": {
+            "post": {
+                "operationId": "PredictImageUrl",
+                "parameters": [
+                    {
+                        "description": "The project id",
+                        "in": "path",
+                        "name": "projectId",
+                        "required": true,
+                        "x-nullable": false,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    },
+                    {
+                        "description": "Optional. Specifies the id of a particular iteration to evaluate against.\r\n            The default iteration for the project will be used when not specified",
+                        "in": "query",
+                        "name": "iterationId",
+                        "required": false,
+                        "x-nullable": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    },
+                    {
+                        "description": "Optional. Specifies the name of application using the endpoint",
+                        "in": "query",
+                        "name": "application",
+                        "required": false,
+                        "x-nullable": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "in": "header",
+                        "name": "Prediction-Key",
+                        "required": true,
+                        "x-ms-client-name": "ApiKey",
+                        "x-ms-parameter-location": "client",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "created": {
+                                            "format": "date-time",
+                                            "readOnly": true,
+                                            "type": "string",
+                                            "nullable": false
+                                        },
+                                        "id": {
+                                            "format": "uuid",
+                                            "readOnly": true,
+                                            "type": "string",
+                                            "nullable": false
+                                        },
+                                        "iteration": {
+                                            "format": "uuid",
+                                            "readOnly": true,
+                                            "type": "string",
+                                            "nullable": false
+                                        },
+                                        "predictions": {
+                                            "items": {
+                                                "properties": {
+                                                    "boundingBox": {
+                                                        "readOnly": true,
+                                                        "properties": {
+                                                            "height": {
+                                                                "format": "float",
+                                                                "type": "number",
+                                                                "nullable": false
+                                                            },
+                                                            "left": {
+                                                                "format": "float",
+                                                                "type": "number",
+                                                                "nullable": false
+                                                            },
+                                                            "top": {
+                                                                "format": "float",
+                                                                "type": "number",
+                                                                "nullable": false
+                                                            },
+                                                            "width": {
+                                                                "format": "float",
+                                                                "type": "number",
+                                                                "nullable": false
+                                                            }
+                                                        },
+                                                        "type": "object",
+                                                        "nullable": true
+                                                    },
+                                                    "probability": {
+                                                        "format": "float",
+                                                        "readOnly": true,
+                                                        "type": "number",
+                                                        "nullable": false
+                                                    },
+                                                    "tagId": {
+                                                        "format": "uuid",
+                                                        "readOnly": true,
+                                                        "type": "string",
+                                                        "nullable": false
+                                                    },
+                                                    "tagName": {
+                                                        "readOnly": true,
+                                                        "type": "string",
+                                                        "nullable": true
+                                                    }
+                                                },
+                                                "type": "object",
+                                                "nullable": true
+                                            },
+                                            "readOnly": true,
+                                            "type": "array",
+                                            "nullable": true
+                                        },
+                                        "project": {
+                                            "format": "uuid",
+                                            "readOnly": true,
+                                            "type": "string",
+                                            "nullable": false
+                                        }
+                                    },
+                                    "type": "object",
+                                    "nullable": true
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "properties": {
+                                        "created": {
+                                            "format": "date-time",
+                                            "readOnly": true,
+                                            "type": "string",
+                                            "nullable": false
+                                        },
+                                        "id": {
+                                            "format": "uuid",
+                                            "readOnly": true,
+                                            "type": "string",
+                                            "nullable": false
+                                        },
+                                        "iteration": {
+                                            "format": "uuid",
+                                            "readOnly": true,
+                                            "type": "string",
+                                            "nullable": false
+                                        },
+                                        "predictions": {
+                                            "items": {
+                                                "properties": {
+                                                    "boundingBox": {
+                                                        "readOnly": true,
+                                                        "properties": {
+                                                            "height": {
+                                                                "format": "float",
+                                                                "type": "number",
+                                                                "nullable": false
+                                                            },
+                                                            "left": {
+                                                                "format": "float",
+                                                                "type": "number",
+                                                                "nullable": false
+                                                            },
+                                                            "top": {
+                                                                "format": "float",
+                                                                "type": "number",
+                                                                "nullable": false
+                                                            },
+                                                            "width": {
+                                                                "format": "float",
+                                                                "type": "number",
+                                                                "nullable": false
+                                                            }
+                                                        },
+                                                        "type": "object",
+                                                        "nullable": true
+                                                    },
+                                                    "probability": {
+                                                        "format": "float",
+                                                        "readOnly": true,
+                                                        "type": "number",
+                                                        "nullable": false
+                                                    },
+                                                    "tagId": {
+                                                        "format": "uuid",
+                                                        "readOnly": true,
+                                                        "type": "string",
+                                                        "nullable": false
+                                                    },
+                                                    "tagName": {
+                                                        "readOnly": true,
+                                                        "type": "string",
+                                                        "nullable": true
+                                                    }
+                                                },
+                                                "type": "object",
+                                                "nullable": true
+                                            },
+                                            "readOnly": true,
+                                            "type": "array",
+                                            "nullable": true
+                                        },
+                                        "project": {
+                                            "format": "uuid",
+                                            "readOnly": true,
+                                            "type": "string",
+                                            "nullable": false
+                                        }
+                                    },
+                                    "type": "object",
+                                    "nullable": true
+                                }
+                            },
+                            "application/xml": {
+                                "schema": {
+                                    "properties": {
+                                        "created": {
+                                            "format": "date-time",
+                                            "readOnly": true,
+                                            "type": "string",
+                                            "nullable": false
+                                        },
+                                        "id": {
+                                            "format": "uuid",
+                                            "readOnly": true,
+                                            "type": "string",
+                                            "nullable": false
+                                        },
+                                        "iteration": {
+                                            "format": "uuid",
+                                            "readOnly": true,
+                                            "type": "string",
+                                            "nullable": false
+                                        },
+                                        "predictions": {
+                                            "items": {
+                                                "properties": {
+                                                    "boundingBox": {
+                                                        "readOnly": true,
+                                                        "properties": {
+                                                            "height": {
+                                                                "format": "float",
+                                                                "type": "number",
+                                                                "nullable": false
+                                                            },
+                                                            "left": {
+                                                                "format": "float",
+                                                                "type": "number",
+                                                                "nullable": false
+                                                            },
+                                                            "top": {
+                                                                "format": "float",
+                                                                "type": "number",
+                                                                "nullable": false
+                                                            },
+                                                            "width": {
+                                                                "format": "float",
+                                                                "type": "number",
+                                                                "nullable": false
+                                                            }
+                                                        },
+                                                        "type": "object",
+                                                        "nullable": true
+                                                    },
+                                                    "probability": {
+                                                        "format": "float",
+                                                        "readOnly": true,
+                                                        "type": "number",
+                                                        "nullable": false
+                                                    },
+                                                    "tagId": {
+                                                        "format": "uuid",
+                                                        "readOnly": true,
+                                                        "type": "string",
+                                                        "nullable": false
+                                                    },
+                                                    "tagName": {
+                                                        "readOnly": true,
+                                                        "type": "string",
+                                                        "nullable": true
+                                                    }
+                                                },
+                                                "type": "object",
+                                                "nullable": true
+                                            },
+                                            "readOnly": true,
+                                            "type": "array",
+                                            "nullable": true
+                                        },
+                                        "project": {
+                                            "format": "uuid",
+                                            "readOnly": true,
+                                            "type": "string",
+                                            "nullable": false
+                                        }
+                                    },
+                                    "type": "object",
+                                    "nullable": true
+                                }
+                            },
+                            "text/xml": {
+                                "schema": {
+                                    "properties": {
+                                        "created": {
+                                            "format": "date-time",
+                                            "readOnly": true,
+                                            "type": "string",
+                                            "nullable": false
+                                        },
+                                        "id": {
+                                            "format": "uuid",
+                                            "readOnly": true,
+                                            "type": "string",
+                                            "nullable": false
+                                        },
+                                        "iteration": {
+                                            "format": "uuid",
+                                            "readOnly": true,
+                                            "type": "string",
+                                            "nullable": false
+                                        },
+                                        "predictions": {
+                                            "items": {
+                                                "properties": {
+                                                    "boundingBox": {
+                                                        "readOnly": true,
+                                                        "properties": {
+                                                            "height": {
+                                                                "format": "float",
+                                                                "type": "number",
+                                                                "nullable": false
+                                                            },
+                                                            "left": {
+                                                                "format": "float",
+                                                                "type": "number",
+                                                                "nullable": false
+                                                            },
+                                                            "top": {
+                                                                "format": "float",
+                                                                "type": "number",
+                                                                "nullable": false
+                                                            },
+                                                            "width": {
+                                                                "format": "float",
+                                                                "type": "number",
+                                                                "nullable": false
+                                                            }
+                                                        },
+                                                        "type": "object",
+                                                        "nullable": true
+                                                    },
+                                                    "probability": {
+                                                        "format": "float",
+                                                        "readOnly": true,
+                                                        "type": "number",
+                                                        "nullable": false
+                                                    },
+                                                    "tagId": {
+                                                        "format": "uuid",
+                                                        "readOnly": true,
+                                                        "type": "string",
+                                                        "nullable": false
+                                                    },
+                                                    "tagName": {
+                                                        "readOnly": true,
+                                                        "type": "string",
+                                                        "nullable": true
+                                                    }
+                                                },
+                                                "type": "object",
+                                                "nullable": true
+                                            },
+                                            "readOnly": true,
+                                            "type": "array",
+                                            "nullable": true
+                                        },
+                                        "project": {
+                                            "format": "uuid",
+                                            "readOnly": true,
+                                            "type": "string",
+                                            "nullable": false
+                                        }
+                                    },
+                                    "type": "object",
+                                    "nullable": true
+                                }
+                            }
+                        }
+                    }
+                },
+                "summary": "Predict an image url and saves the result",
+                "tags": [
+                    "ImagePredictionApi"
+                ],
+                "x-ms-examples": {
+                    "Successful PredictImageUrl request": {
+                        "parameters": {
+                            "Content-Type": "application/json",
+                            "Endpoint": "https://westus.api.cognitive.microsoft.com",
+                            "Prediction-Key": "{API Key}",
+                            "imageUrl": {
+                                "url": "{Image URL}"
+                            },
+                            "iterationId": "fe1e83c4-6f50-4899-9544-6bb08cf0e15a",
+                            "projectId": "64b822c5-8082-4b36-a426-27225f4aa18c"
+                        },
+                        "responses": {
+                            "200": {
+                                "body": {
+                                    "created": "2017-12-19T14:21:41.6789561Z",
+                                    "id": "951098b2-9b69-427b-bddb-d5cb618874e3",
+                                    "iteration": "fe1e83c4-6f50-4899-9544-6bb08cf0e15a",
+                                    "predictions": [
+                                        {
+                                            "probability": 0.05149666,
+                                            "tagId": "e31ff107-5505-4753-be42-b369b21b026c",
+                                            "tagName": "Hemlock"
+                                        },
+                                        {
+                                            "probability": 0.000193528482,
+                                            "tagId": "349d72ac-0948-4d51-b1e4-c14a1f9b848a",
+                                            "tagName": "Japanese Cherry"
+                                        }
+                                    ],
+                                    "project": "64b822c5-8082-4b36-a426-27225f4aa18c"
+                                },
+                                "headers": {}
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "url": {
+                                        "type": "string",
+                                        "nullable": true
+                                    }
+                                },
+                                "type": "object",
+                                "nullable": true
+                            }
+                        },
+                        "text/json": {
+                            "schema": {
+                                "properties": {
+                                    "url": {
+                                        "type": "string",
+                                        "nullable": true
+                                    }
+                                },
+                                "type": "object",
+                                "nullable": true
+                            }
+                        },
+                        "application/xml": {
+                            "schema": {
+                                "properties": {
+                                    "url": {
+                                        "type": "string",
+                                        "nullable": true
+                                    }
+                                },
+                                "type": "object",
+                                "nullable": true
+                            }
+                        },
+                        "text/xml": {
+                            "schema": {
+                                "properties": {
+                                    "url": {
+                                        "type": "string",
+                                        "nullable": true
+                                    }
+                                },
+                                "type": "object",
+                                "nullable": true
+                            }
+                        },
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "properties": {
+                                    "url": {
+                                        "type": "string",
+                                        "nullable": true
+                                    }
+                                },
+                                "type": "object",
+                                "nullable": true
+                            }
+                        }
+                    },
+                    "description": "An {Iris.Web.Api.Models.ImageUrl} that contains the url of the image to be evaluated",
+                    "required": true
+                }
+            }
+        },
+        "/{projectId}/url/nostore": {
+            "post": {
+                "operationId": "PredictImageUrlWithNoStore",
+                "parameters": [
+                    {
+                        "description": "The project id",
+                        "in": "path",
+                        "name": "projectId",
+                        "required": true,
+                        "x-nullable": false,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    },
+                    {
+                        "description": "Optional. Specifies the id of a particular iteration to evaluate against.\r\n            The default iteration for the project will be used when not specified",
+                        "in": "query",
+                        "name": "iterationId",
+                        "required": false,
+                        "x-nullable": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    },
+                    {
+                        "description": "Optional. Specifies the name of application using the endpoint",
+                        "in": "query",
+                        "name": "application",
+                        "required": false,
+                        "x-nullable": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "in": "header",
+                        "name": "Prediction-Key",
+                        "required": true,
+                        "x-ms-client-name": "ApiKey",
+                        "x-ms-parameter-location": "client",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "created": {
+                                            "format": "date-time",
+                                            "readOnly": true,
+                                            "type": "string",
+                                            "nullable": false
+                                        },
+                                        "id": {
+                                            "format": "uuid",
+                                            "readOnly": true,
+                                            "type": "string",
+                                            "nullable": false
+                                        },
+                                        "iteration": {
+                                            "format": "uuid",
+                                            "readOnly": true,
+                                            "type": "string",
+                                            "nullable": false
+                                        },
+                                        "predictions": {
+                                            "items": {
+                                                "properties": {
+                                                    "boundingBox": {
+                                                        "readOnly": true,
+                                                        "properties": {
+                                                            "height": {
+                                                                "format": "float",
+                                                                "type": "number",
+                                                                "nullable": false
+                                                            },
+                                                            "left": {
+                                                                "format": "float",
+                                                                "type": "number",
+                                                                "nullable": false
+                                                            },
+                                                            "top": {
+                                                                "format": "float",
+                                                                "type": "number",
+                                                                "nullable": false
+                                                            },
+                                                            "width": {
+                                                                "format": "float",
+                                                                "type": "number",
+                                                                "nullable": false
+                                                            }
+                                                        },
+                                                        "type": "object",
+                                                        "nullable": true
+                                                    },
+                                                    "probability": {
+                                                        "format": "float",
+                                                        "readOnly": true,
+                                                        "type": "number",
+                                                        "nullable": false
+                                                    },
+                                                    "tagId": {
+                                                        "format": "uuid",
+                                                        "readOnly": true,
+                                                        "type": "string",
+                                                        "nullable": false
+                                                    },
+                                                    "tagName": {
+                                                        "readOnly": true,
+                                                        "type": "string",
+                                                        "nullable": true
+                                                    }
+                                                },
+                                                "type": "object",
+                                                "nullable": true
+                                            },
+                                            "readOnly": true,
+                                            "type": "array",
+                                            "nullable": true
+                                        },
+                                        "project": {
+                                            "format": "uuid",
+                                            "readOnly": true,
+                                            "type": "string",
+                                            "nullable": false
+                                        }
+                                    },
+                                    "type": "object",
+                                    "nullable": true
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "properties": {
+                                        "created": {
+                                            "format": "date-time",
+                                            "readOnly": true,
+                                            "type": "string",
+                                            "nullable": false
+                                        },
+                                        "id": {
+                                            "format": "uuid",
+                                            "readOnly": true,
+                                            "type": "string",
+                                            "nullable": false
+                                        },
+                                        "iteration": {
+                                            "format": "uuid",
+                                            "readOnly": true,
+                                            "type": "string",
+                                            "nullable": false
+                                        },
+                                        "predictions": {
+                                            "items": {
+                                                "properties": {
+                                                    "boundingBox": {
+                                                        "readOnly": true,
+                                                        "properties": {
+                                                            "height": {
+                                                                "format": "float",
+                                                                "type": "number",
+                                                                "nullable": false
+                                                            },
+                                                            "left": {
+                                                                "format": "float",
+                                                                "type": "number",
+                                                                "nullable": false
+                                                            },
+                                                            "top": {
+                                                                "format": "float",
+                                                                "type": "number",
+                                                                "nullable": false
+                                                            },
+                                                            "width": {
+                                                                "format": "float",
+                                                                "type": "number",
+                                                                "nullable": false
+                                                            }
+                                                        },
+                                                        "type": "object",
+                                                        "nullable": true
+                                                    },
+                                                    "probability": {
+                                                        "format": "float",
+                                                        "readOnly": true,
+                                                        "type": "number",
+                                                        "nullable": false
+                                                    },
+                                                    "tagId": {
+                                                        "format": "uuid",
+                                                        "readOnly": true,
+                                                        "type": "string",
+                                                        "nullable": false
+                                                    },
+                                                    "tagName": {
+                                                        "readOnly": true,
+                                                        "type": "string",
+                                                        "nullable": true
+                                                    }
+                                                },
+                                                "type": "object",
+                                                "nullable": true
+                                            },
+                                            "readOnly": true,
+                                            "type": "array",
+                                            "nullable": true
+                                        },
+                                        "project": {
+                                            "format": "uuid",
+                                            "readOnly": true,
+                                            "type": "string",
+                                            "nullable": false
+                                        }
+                                    },
+                                    "type": "object",
+                                    "nullable": true
+                                }
+                            },
+                            "application/xml": {
+                                "schema": {
+                                    "properties": {
+                                        "created": {
+                                            "format": "date-time",
+                                            "readOnly": true,
+                                            "type": "string",
+                                            "nullable": false
+                                        },
+                                        "id": {
+                                            "format": "uuid",
+                                            "readOnly": true,
+                                            "type": "string",
+                                            "nullable": false
+                                        },
+                                        "iteration": {
+                                            "format": "uuid",
+                                            "readOnly": true,
+                                            "type": "string",
+                                            "nullable": false
+                                        },
+                                        "predictions": {
+                                            "items": {
+                                                "properties": {
+                                                    "boundingBox": {
+                                                        "readOnly": true,
+                                                        "properties": {
+                                                            "height": {
+                                                                "format": "float",
+                                                                "type": "number",
+                                                                "nullable": false
+                                                            },
+                                                            "left": {
+                                                                "format": "float",
+                                                                "type": "number",
+                                                                "nullable": false
+                                                            },
+                                                            "top": {
+                                                                "format": "float",
+                                                                "type": "number",
+                                                                "nullable": false
+                                                            },
+                                                            "width": {
+                                                                "format": "float",
+                                                                "type": "number",
+                                                                "nullable": false
+                                                            }
+                                                        },
+                                                        "type": "object",
+                                                        "nullable": true
+                                                    },
+                                                    "probability": {
+                                                        "format": "float",
+                                                        "readOnly": true,
+                                                        "type": "number",
+                                                        "nullable": false
+                                                    },
+                                                    "tagId": {
+                                                        "format": "uuid",
+                                                        "readOnly": true,
+                                                        "type": "string",
+                                                        "nullable": false
+                                                    },
+                                                    "tagName": {
+                                                        "readOnly": true,
+                                                        "type": "string",
+                                                        "nullable": true
+                                                    }
+                                                },
+                                                "type": "object",
+                                                "nullable": true
+                                            },
+                                            "readOnly": true,
+                                            "type": "array",
+                                            "nullable": true
+                                        },
+                                        "project": {
+                                            "format": "uuid",
+                                            "readOnly": true,
+                                            "type": "string",
+                                            "nullable": false
+                                        }
+                                    },
+                                    "type": "object",
+                                    "nullable": true
+                                }
+                            },
+                            "text/xml": {
+                                "schema": {
+                                    "properties": {
+                                        "created": {
+                                            "format": "date-time",
+                                            "readOnly": true,
+                                            "type": "string",
+                                            "nullable": false
+                                        },
+                                        "id": {
+                                            "format": "uuid",
+                                            "readOnly": true,
+                                            "type": "string",
+                                            "nullable": false
+                                        },
+                                        "iteration": {
+                                            "format": "uuid",
+                                            "readOnly": true,
+                                            "type": "string",
+                                            "nullable": false
+                                        },
+                                        "predictions": {
+                                            "items": {
+                                                "properties": {
+                                                    "boundingBox": {
+                                                        "readOnly": true,
+                                                        "properties": {
+                                                            "height": {
+                                                                "format": "float",
+                                                                "type": "number",
+                                                                "nullable": false
+                                                            },
+                                                            "left": {
+                                                                "format": "float",
+                                                                "type": "number",
+                                                                "nullable": false
+                                                            },
+                                                            "top": {
+                                                                "format": "float",
+                                                                "type": "number",
+                                                                "nullable": false
+                                                            },
+                                                            "width": {
+                                                                "format": "float",
+                                                                "type": "number",
+                                                                "nullable": false
+                                                            }
+                                                        },
+                                                        "type": "object",
+                                                        "nullable": true
+                                                    },
+                                                    "probability": {
+                                                        "format": "float",
+                                                        "readOnly": true,
+                                                        "type": "number",
+                                                        "nullable": false
+                                                    },
+                                                    "tagId": {
+                                                        "format": "uuid",
+                                                        "readOnly": true,
+                                                        "type": "string",
+                                                        "nullable": false
+                                                    },
+                                                    "tagName": {
+                                                        "readOnly": true,
+                                                        "type": "string",
+                                                        "nullable": true
+                                                    }
+                                                },
+                                                "type": "object",
+                                                "nullable": true
+                                            },
+                                            "readOnly": true,
+                                            "type": "array",
+                                            "nullable": true
+                                        },
+                                        "project": {
+                                            "format": "uuid",
+                                            "readOnly": true,
+                                            "type": "string",
+                                            "nullable": false
+                                        }
+                                    },
+                                    "type": "object",
+                                    "nullable": true
+                                }
+                            }
+                        }
+                    }
+                },
+                "summary": "Predict an image url without saving the result",
+                "tags": [
+                    "ImagePredictionApi"
+                ],
+                "x-ms-examples": {
+                    "Successful PredictImageUrlWithNoStore request": {
+                        "parameters": {
+                            "Content-Type": "application/json",
+                            "Endpoint": "https://westus.api.cognitive.microsoft.com",
+                            "Prediction-Key": "{API Key}",
+                            "imageUrl": {
+                                "url": "{Image URL}"
+                            },
+                            "iterationId": "fe1e83c4-6f50-4899-9544-6bb08cf0e15a",
+                            "projectId": "64b822c5-8082-4b36-a426-27225f4aa18c"
+                        },
+                        "responses": {
+                            "200": {
+                                "body": {
+                                    "created": "2017-12-19T14:21:41.6789561Z",
+                                    "id": "951098b2-9b69-427b-bddb-d5cb618874e3",
+                                    "iteration": "fe1e83c4-6f50-4899-9544-6bb08cf0e15a",
+                                    "predictions": [
+                                        {
+                                            "probability": 0.05149666,
+                                            "tagId": "e31ff107-5505-4753-be42-b369b21b026c",
+                                            "tagName": "Hemlock"
+                                        },
+                                        {
+                                            "probability": 0.000193528482,
+                                            "tagId": "349d72ac-0948-4d51-b1e4-c14a1f9b848a",
+                                            "tagName": "Japanese Cherry"
+                                        }
+                                    ],
+                                    "project": "64b822c5-8082-4b36-a426-27225f4aa18c"
+                                },
+                                "headers": {}
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "url": {
+                                        "type": "string",
+                                        "nullable": true
+                                    }
+                                },
+                                "type": "object",
+                                "nullable": true
+                            }
+                        },
+                        "text/json": {
+                            "schema": {
+                                "properties": {
+                                    "url": {
+                                        "type": "string",
+                                        "nullable": true
+                                    }
+                                },
+                                "type": "object",
+                                "nullable": true
+                            }
+                        },
+                        "application/xml": {
+                            "schema": {
+                                "properties": {
+                                    "url": {
+                                        "type": "string",
+                                        "nullable": true
+                                    }
+                                },
+                                "type": "object",
+                                "nullable": true
+                            }
+                        },
+                        "text/xml": {
+                            "schema": {
+                                "properties": {
+                                    "url": {
+                                        "type": "string",
+                                        "nullable": true
+                                    }
+                                },
+                                "type": "object",
+                                "nullable": true
+                            }
+                        },
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "properties": {
+                                    "url": {
+                                        "type": "string",
+                                        "nullable": true
+                                    }
+                                },
+                                "type": "object",
+                                "nullable": true
+                            }
+                        }
+                    },
+                    "description": "An {Iris.Web.Api.Models.ImageUrl} that contains the url of the image to be evaluated",
+                    "required": true
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "BoundingBox": {
+                "properties": {
+                    "height": {
+                        "format": "float",
+                        "type": "number",
+                        "nullable": false
+                    },
+                    "left": {
+                        "format": "float",
+                        "type": "number",
+                        "nullable": false
+                    },
+                    "top": {
+                        "format": "float",
+                        "type": "number",
+                        "nullable": false
+                    },
+                    "width": {
+                        "format": "float",
+                        "type": "number",
+                        "nullable": false
+                    }
+                },
+                "type": "object",
+                "nullable": true
+            },
+            "ImagePrediction": {
+                "properties": {
+                    "created": {
+                        "format": "date-time",
+                        "readOnly": true,
+                        "type": "string",
+                        "nullable": false
+                    },
+                    "id": {
+                        "format": "uuid",
+                        "readOnly": true,
+                        "type": "string",
+                        "nullable": false
+                    },
+                    "iteration": {
+                        "format": "uuid",
+                        "readOnly": true,
+                        "type": "string",
+                        "nullable": false
+                    },
+                    "predictions": {
+                        "items": {
+                            "properties": {
+                                "boundingBox": {
+                                    "readOnly": true,
+                                    "properties": {
+                                        "height": {
+                                            "format": "float",
+                                            "type": "number",
+                                            "nullable": false
+                                        },
+                                        "left": {
+                                            "format": "float",
+                                            "type": "number",
+                                            "nullable": false
+                                        },
+                                        "top": {
+                                            "format": "float",
+                                            "type": "number",
+                                            "nullable": false
+                                        },
+                                        "width": {
+                                            "format": "float",
+                                            "type": "number",
+                                            "nullable": false
+                                        }
+                                    },
+                                    "type": "object",
+                                    "nullable": true
+                                },
+                                "probability": {
+                                    "format": "float",
+                                    "readOnly": true,
+                                    "type": "number",
+                                    "nullable": false
+                                },
+                                "tagId": {
+                                    "format": "uuid",
+                                    "readOnly": true,
+                                    "type": "string",
+                                    "nullable": false
+                                },
+                                "tagName": {
+                                    "readOnly": true,
+                                    "type": "string",
+                                    "nullable": true
+                                }
+                            },
+                            "type": "object",
+                            "nullable": true
+                        },
+                        "readOnly": true,
+                        "type": "array",
+                        "nullable": true
+                    },
+                    "project": {
+                        "format": "uuid",
+                        "readOnly": true,
+                        "type": "string",
+                        "nullable": false
+                    }
+                },
+                "type": "object",
+                "nullable": true
+            },
+            "ImageUrl": {
+                "properties": {
+                    "url": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "type": "object",
+                "nullable": true
+            },
+            "Prediction": {
+                "properties": {
+                    "boundingBox": {
+                        "readOnly": true,
+                        "properties": {
+                            "height": {
+                                "format": "float",
+                                "type": "number",
+                                "nullable": false
+                            },
+                            "left": {
+                                "format": "float",
+                                "type": "number",
+                                "nullable": false
+                            },
+                            "top": {
+                                "format": "float",
+                                "type": "number",
+                                "nullable": false
+                            },
+                            "width": {
+                                "format": "float",
+                                "type": "number",
+                                "nullable": false
+                            }
+                        },
+                        "type": "object",
+                        "nullable": true
+                    },
+                    "probability": {
+                        "format": "float",
+                        "readOnly": true,
+                        "type": "number",
+                        "nullable": false
+                    },
+                    "tagId": {
+                        "format": "uuid",
+                        "readOnly": true,
+                        "type": "string",
+                        "nullable": false
+                    },
+                    "tagName": {
+                        "readOnly": true,
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "type": "object",
+                "nullable": true
+            }
+        },
+        "parameters": {
+            "ApiKey": {
+                "in": "header",
+                "name": "Prediction-Key",
+                "required": true,
+                "x-ms-client-name": "ApiKey",
+                "x-ms-parameter-location": "client",
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "Endpoint": {
+                "description": "Supported Cognitive Services endpoints",
+                "in": "path",
+                "name": "Endpoint",
+                "required": true,
+                "x-ms-parameter-location": "client",
+                "x-ms-skip-url-encoding": true,
+                "schema": {
+                    "type": "string"
+                },
+                "allowReserved": true
+            }
+        },
+        "requestBodies": {
+            "PredictImage": {
+                "content": {
+                    "application/octet-stream": {
+                        "schema": {
+                            "type": "string",
+                            "format": "binary"
+                        }
+                    }
+                },
+                "required": true
+            },
+            "PredictImageUrlImageurl": {
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "properties": {
+                                "url": {
+                                    "type": "string",
+                                    "nullable": true
+                                }
+                            },
+                            "type": "object",
+                            "nullable": true
+                        }
+                    },
+                    "text/json": {
+                        "schema": {
+                            "properties": {
+                                "url": {
+                                    "type": "string",
+                                    "nullable": true
+                                }
+                            },
+                            "type": "object",
+                            "nullable": true
+                        }
+                    },
+                    "application/xml": {
+                        "schema": {
+                            "properties": {
+                                "url": {
+                                    "type": "string",
+                                    "nullable": true
+                                }
+                            },
+                            "type": "object",
+                            "nullable": true
+                        }
+                    },
+                    "text/xml": {
+                        "schema": {
+                            "properties": {
+                                "url": {
+                                    "type": "string",
+                                    "nullable": true
+                                }
+                            },
+                            "type": "object",
+                            "nullable": true
+                        }
+                    },
+                    "application/x-www-form-urlencoded": {
+                        "schema": {
+                            "properties": {
+                                "url": {
+                                    "type": "string",
+                                    "nullable": true
+                                }
+                            },
+                            "type": "object",
+                            "nullable": true
+                        }
+                    }
+                },
+                "description": "An {Iris.Web.Api.Models.ImageUrl} that contains the url of the image to be evaluated",
+                "required": true
+            }
+        }
+    }
+}

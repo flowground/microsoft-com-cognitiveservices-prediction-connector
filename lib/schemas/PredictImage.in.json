@@ -1,0 +1,27 @@
+{
+    "type": "object",
+    "properties": {
+        "projectId": {
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+        },
+        "iterationId": {
+            "required": false,
+            "type": "string",
+            "format": "uuid"
+        },
+        "application": {
+            "required": false,
+            "type": "string"
+        },
+        "requestBody": {
+            "type": "string",
+            "format": "binary"
+        },
+        "Prediction_Key": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

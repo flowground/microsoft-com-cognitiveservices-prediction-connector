@@ -1,0 +1,124 @@
+{
+    "title": "Custom Vision Prediction Client",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/microsoft.com/cognitiveservices-Prediction/2.0/swagger.json",
+    "envVars": {},
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://southcentralus.api.cognitive.microsoft.com/customvision/v2.0/Prediction",
+                    "{Endpoint}",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            }
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "PredictImage": {
+            "main": "./lib/actions/PredictImage.js",
+            "title": "Predict an image and saves the result",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/PredictImage.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "PredictImageWithNoStore": {
+            "main": "./lib/actions/PredictImageWithNoStore.js",
+            "title": "Predict an image without saving the result",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/PredictImageWithNoStore.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "PredictImageUrl": {
+            "main": "./lib/actions/PredictImageUrl.js",
+            "title": "Predict an image url and saves the result",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/json": "text/json",
+                        "application/xml": "application/xml",
+                        "text/xml": "text/xml",
+                        "application/x-www-form-urlencoded": "application/x-www-form-urlencoded"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/PredictImageUrl.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "PredictImageUrlWithNoStore": {
+            "main": "./lib/actions/PredictImageUrlWithNoStore.js",
+            "title": "Predict an image url without saving the result",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/json": "text/json",
+                        "application/xml": "application/xml",
+                        "text/xml": "text/xml",
+                        "application/x-www-form-urlencoded": "application/x-www-form-urlencoded"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/PredictImageUrlWithNoStore.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}
